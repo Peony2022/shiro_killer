@@ -1,4 +1,4 @@
-# shiro_killer
+# shiro_killer  by:白术，铁皮石斛。
 
 #### 正文
 
@@ -79,4 +79,4 @@ req.Header.Set("User-Agent", UserAgent)
 req.Header.Set("Cookie", "rememberMe="+RememberMe) // 设置请求头
 return !strings.Contains(SetCookieAll, "rememberMe=deleteMe;"), nil // 检测是否包含"deleteMe"
 ```
-by:白术，铁皮石斛。
+
