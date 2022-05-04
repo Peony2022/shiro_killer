@@ -79,6 +79,6 @@ req.Header.Set("User-Agent", UserAgent)
 req.Header.Set("Cookie", "rememberMe="+RememberMe) // 设置请求头
 return !strings.Contains(SetCookieAll, "rememberMe=deleteMe;"), nil // 检测是否包含"deleteMe"
 ```
-by:白术，铁皮石斛。
+by:铁皮石斛，白术。
 
 注：后面可能会想成立一个知识星球，持续更新与分享更多自开发各种工具，以及各种红队姿势。
