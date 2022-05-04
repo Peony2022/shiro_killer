@@ -1,4 +1,4 @@
-# shiro_killer  by:白术，铁皮石斛。
+# Shiro_killer  by:白术，铁皮石斛。
 
 #### 正文
 
