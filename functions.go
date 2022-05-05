@@ -56,7 +56,7 @@ func HttpRequest(RememberMe string, TargetUrl string) (bool, error) {
 		req.Header.Set("Content-Type", "application/x-www-form-urlencoded")
 	}
 	req.Header.Set("User-Agent", UserAgent)
-	req.Header.Set("Cookie", "rememberMe="+RememberMe)
+	req.Header.Set("Cookie", NRemeberMe+"="+RememberMe)
 	resp, err := client.Do(req)
 	if err != nil {
 		return false, err
@@ -67,5 +67,5 @@ func HttpRequest(RememberMe string, TargetUrl string) (bool, error) {
 	for i := range resp.Header["Set-Cookie"] {
 		SetCookieAll += resp.Header["Set-Cookie"][i]
 	}
-	return !strings.Contains(SetCookieAll, "rememberMe=deleteMe;"), nil
+	return !strings.Contains(SetCookieAll, NRemeberMe+"=deleteMe;"), nil
 }

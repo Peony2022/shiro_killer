@@ -3,7 +3,7 @@
 #### 正文
 
 #### 1. 用法
-
+在项目文件夹使用 `go build` 编译
 `ShiroKeyCheck.exe -f urls.txt` 批量扫描 `urls.txt` 中的目标
 
 *可选参数*
@@ -14,11 +14,10 @@
 > - *-timeout 每个请求的超时时间 `3`*
 > - *-interval 请求之间间隔的时间 `0`*
 > - *-proxy HTTP代理如 `http://127.0.0.1:8080`*
-> - *-key 指定需要检测的KEY*
+> - *-key 指定需要检测的KEY文件*
 > - *-t 并发数量 `50`*
 > - *-k 标签指定keys文件*
-
-
+> - *-rm rememberMe 关键字的别名 `rememberMe`*
 
 #### 2. 优点
 

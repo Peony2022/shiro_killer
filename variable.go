@@ -35,14 +35,15 @@ var (
 		"s2SE9y32PvLeYo+VGFpcKA==", "SrpFBcVD89eTQ2icOD0TMg==", "U0hGX2d1bnMAAAAAAAAAAA==", "Us0KvVhTeasAm43KFLAeng==",
 		"Ymx1ZXdoYWxlAAAAAAAAAA==", "YWJjZGRjYmFhYmNkZGNiYQ==", "zIiHplamyXlVB11UXWol8g==", "ZjQyMTJiNTJhZGZmYjFjMQ=="}
 	CheckContent string
-	UserAgent string
-	UrlFile   string
-	Method    string
-	SKey      string
-	HttpProxy string
-	PostContent string
-	AesMode     string
-	Timeout     int
+	UserAgent    string
+	UrlFile      string
+	Method       string
+	SKey         string
+	HttpProxy    string
+	PostContent  string
+	AesMode      string
+	Timeout      int
 	Interval     int
-	Ant    int
+	Ant          int
+	NRemeberMe   string
 )

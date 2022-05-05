@@ -27,7 +27,7 @@ func GetCommandArgs() {
 	flag.StringVar(&AesMode, "mode", "", "Specify CBC or GCM encryption mode")
 	flag.IntVar(&Ant, "t", 50, "Number of goroutines")
 	flag.StringVar(&CheckContent, "chk", "rO0ABXNyADJvcmcuYXBhY2hlLnNoaXJvLnN1YmplY3QuU2ltcGxlUHJpbmNpcGFsQ29sbGVjdGlvbqh/WCXGowhKAwABTAAPcmVhbG1QcmluY2lwYWxzdAAPTGphdmEvdXRpbC9NYXA7eHBwdwEAeA==", "Check Content")
-
+	flag.StringVar(&NRemeberMe, "rm", "rememberMe", "Name of rememberMe")
 	flag.Parse()
 }
 func StartTask(TargetUrl string) {
@@ -63,26 +63,28 @@ func main() {
 		defer ants.Release()
 		pool, _ := ants.NewPool(Ant)
 
-		skeys, err := os.Open(SKey)
-		if err != nil {
-			panic(err)
-		}
-		defer skeys.Close()
-		krd := bufio.NewReader(skeys)
-		for {
-			UnFormatted, _, err := krd.ReadLine()
-			if err == io.EOF {
-				break
+		if SKey != "" {
+			KeyF, err := os.Open(SKey)
+			if err != nil {
+				panic(err)
 			}
-			ShiroKeys = append(ShiroKeys, string(UnFormatted))
+			defer KeyF.Close()
+			krd := bufio.NewReader(KeyF)
+			for {
+				UnFormatted, _, err := krd.ReadLine()
+				if err == io.EOF {
+					break
+				}
+				ShiroKeys = append(ShiroKeys, string(UnFormatted))
+			}
 		}
 
-		f, err := os.Open(UrlFile)
+		UrlF, err := os.Open(UrlFile)
 		if err != nil {
 			panic(err)
 		}
-		defer f.Close()
-		rd := bufio.NewReader(f)
+		defer UrlF.Close()
+		rd := bufio.NewReader(UrlF)
 		startTime := time.Now()
 		for {
 			UnFormatted, _, err := rd.ReadLine()
@@ -104,7 +106,7 @@ func main() {
 		fmt.Println("Done! Time used:", int(endTime.Minutes()), "m", int(endTime.Seconds())%60, "s")
 	} else {
 		flag.Usage()
-		fmt.Println("[Error] UrlFile (-f) and KeysFile (-k) must be specified.")
+		fmt.Println("[Error] UrlFile (-f) must be specified.")
 		os.Exit(1)
 	}
 }
