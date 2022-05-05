@@ -84,5 +84,8 @@ if strings.ToUpper(Method) == "POST" {
     return !strings.Contains(SetCookieAll, "rememberMe=deleteMe;"), nil // 检测是否包含"deleteMe"
 ```
 by:铁皮石斛，白术。
+![图片](https://github.com/Peony2022/shiro_killer/blob/main/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE1.png)
+![图片](https://github.com/Peony2022/shiro_killer/blob/main/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE2.png)
+![avatar](https://github.com/Peony2022/shiro_killer/blob/main/%E8%BF%90%E8%A1%8C%E6%88%AA%E5%9B%BE2.png)
 
 注：后面可能会想成立一个知识星球，持续更新与分享更多自开发各种工具，以及各种红队姿势。
